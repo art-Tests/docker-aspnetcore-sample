@@ -4,10 +4,9 @@ WORKDIR /app
 COPY *.csproj ./
 RUN dotnet restore
 
+EXPOSE 80
+
 
 COPY . ./
 RUN dotnet publish -c release -o out
 ENTRYPOINT ["dotnet","out/docker-dotnetcore.dll"]
-
-## docker build -t test-docker
-## and then docker run -it --rm -p 80:80
